@@ -86,11 +86,13 @@ public class WalletResource {
 	}
 
 	@GetMapping("/statements")
-	public List<Statement> getStatements() {
+	public Ewallet getStatements() {
 		List<Statement> statements = service.getStatements();
+		Ewallet wallet = new Ewallet();
+		wallet.setStatements(statements);
 		if (statements.isEmpty())
 			return null;
-		return statements;
+		return wallet;
 	}
 
 	@DeleteMapping("/{walletId}")
